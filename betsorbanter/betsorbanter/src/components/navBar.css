@@ -1,0 +1,21 @@
+/* NAVBAR BASE */
+.NavBar {
+  width: 100%;
+  background-color: #e3e7ef;
+  display: flex;
+}
+
+/* LOGO */
+#navLogo {
+  font-weight: bold;
+  color: white;
+  font-family: "Arial Black", Gadget, sans-serif;
+  width: 90px;    
+  height: auto;  
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#navLogo:hover {
+  cursor: pointer;
+}

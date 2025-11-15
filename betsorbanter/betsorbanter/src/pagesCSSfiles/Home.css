@@ -1,10 +1,69 @@
-.Home {
-  text-align: center;
+/*CSS for Home Page*/
+.Home{
+  background-color: #0c2861;
 }
 
-
 .Home-header {
-  background-color: #282c34;
+  text-align: center;
   min-height: 100vh;
+}
+
+h1{
+  font-family: "Arial Black", Gadget, sans-serif;
   color: white;
+}
+
+h2{
+  font-family: "Arial Black", cursive, sans-serif;
+  color: rgb(22, 154, 161);
+}
+
+img{
+  width: 200px;
+  height: 200px;
+}
+#webtitle{
+  font-size: 4rem;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+input {
+  width: 800px;
+  height: 50px;
+  font-size: 16px;
+  padding: 5px;
+  margin-top: 20px;
+}
+
+button{
+  width: 100px;
+  height: 60px;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+h4{
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: white;
+  font-size: 24px;
+  text-align: left;
+  margin-left: 50px;
+}
+
+p{
+  color: white;
+  font-size: 18px;
+  text-align: left;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+#mission{
+  display: flex;
+  color: white;
+  flex-direction: row;
+  padding-top: 30px;
 }

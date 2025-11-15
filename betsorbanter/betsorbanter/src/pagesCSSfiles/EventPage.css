@@ -1,1 +1,10 @@
-/*TODO: WILL HOLD CSS FILES FOR EVENTPAGE*/
+/*CSS for Event Page*/
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #0c2861;
+  height: 100%;
+}
+
+
