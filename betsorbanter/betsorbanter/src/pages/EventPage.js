@@ -1,18 +1,20 @@
-//TODO: Event page holds search results with brief description of markets. 
-import React from 'react';
-import { useNavigate } from "react-router-dom";
-import '../pagesCSSfiles/Home.css';
+import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import "../pagesCSSfiles/EventPage.css";
 
-
-function Home() {
+function EventPage() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const passedData = location.state?.searchData || {}; //passes query
+  const query = passedData.query; //uses query field of searchData
 
   return (
-    <div>
-      <h1>market page</h1>
+    <div className="Markets">
+      <h1>Markets for: "{query}"</h1>
       <button onClick={() => navigate("/")}>Go Home</button>
     </div>
   );
 }
 
-export default Home;
+export default EventPage;
