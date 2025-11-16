@@ -14,7 +14,6 @@ GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 
-
 async def evaluate_event_title_paragraph(ticker: str, nyt_query: str = None):
     headers = {"Authorization": f"Bearer {KALSHI_KEY}"} if KALSHI_KEY else {}
     async with httpx.AsyncClient(timeout=10) as client_http:
@@ -27,7 +26,7 @@ async def evaluate_event_title_paragraph(ticker: str, nyt_query: str = None):
     title = kalshi_data.get("title") or kalshi_data.get("name") or ""
     subtitle = kalshi_data.get("sub_title") or kalshi_data.get("subtitle") or ""
 
-    options = ["Yes", "No"]
+    options = ["Yes", "No"] #temporary for yes/no events ONLY
     # if "options" in kalshi_data and kalshi_data["options"]:
     #     for opt in kalshi_data.get("options", [])[:2]:
     #         options.append(opt.get("title") or opt.get("label") or str(opt.get("id")))
@@ -62,7 +61,7 @@ async def evaluate_event_title_paragraph(ticker: str, nyt_query: str = None):
         except Exception:
             return ""
 
-    parsed_articles = []
+    parsed_articles = [] #will use other sources if not available
     loop = asyncio.get_event_loop()
     with ThreadPoolExecutor(max_workers=2) as ex:
         futures = []
@@ -102,6 +101,7 @@ async def evaluate_event_title_paragraph(ticker: str, nyt_query: str = None):
             articles_text += f"Article {i}:\nHeadline: {a['headline']}\nFirst paragraph:\n{snippet}\n\n"
 
     options_json = json.dumps(options)
+
     prompt = f"""
     Think like a trader. Pick exactly one option from {options}.
     Event: {title} ({subtitle})

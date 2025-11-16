@@ -1,4 +1,3 @@
-# app/routers/kalshi_router.py
 from fastapi import APIRouter, Query
 from app.services.kalshi_service import search_events_by_title
 from app.models.kalshi_models import EventsSummaryResponse
