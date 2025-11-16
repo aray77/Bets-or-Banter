@@ -19,6 +19,7 @@ async def search_events_by_title(keyword: str) -> Dict[str, Any]:
     events = []
     for event in data.get("events", []):
         if keyword.lower() in event.get("title", "").lower():
-            events.append(EventSummary(title=event["title"], sub_title=event["sub_title"]))
+            events.append(EventSummary(title=event["title"], sub_title=event["sub_title"], 
+                event_ticker=event["event_ticker"]))
 
     return EventsSummaryResponse(events=events, cursor=data.get("cursor", "")).dict()

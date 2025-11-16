@@ -4,6 +4,7 @@ from typing import List, Optional
 class EventSummary(BaseModel):
     title: str
     sub_title: str
+    event_ticker: str
 
 class EventsSummaryResponse(BaseModel):
     events: List[EventSummary]
