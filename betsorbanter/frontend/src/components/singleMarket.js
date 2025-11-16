@@ -1,7 +1,15 @@
 import React from "react";
 import "./singleMarket.css";
 
-function SingleMarket({ title, sub_title, query, articles, loading, error }) {
+function SingleMarket({
+  title,
+  sub_title,
+  query,
+  articles,
+  loading,
+  error,
+  geminiRaw,
+}) {
   return (
     <div className="singleMarket">
       <h1
@@ -12,9 +20,31 @@ function SingleMarket({ title, sub_title, query, articles, loading, error }) {
       </h1>
       <h2 id="title">{title}</h2>
       <h3>Ends: {sub_title}</h3>
-      <h4 style={{ color: "black" }}>Sample Statistic 1</h4>
-      <h4 style={{ color: "black" }}>Sample Statistic 2</h4>
-      <h4 style={{ color: "black" }}>Sample Statistic 3</h4>
+      <div className="gemini-section">
+        <h3>AI Summary (Gemini Raw):</h3>
+
+        {loading ? (
+          <p style={{ color: "black", fontStyle: "italic" }}>
+            Loading AI summary...
+          </p>
+        ) : geminiRaw !== null && geminiRaw !== undefined ? (
+          <pre
+            style={{
+              color: "black",
+              overflowY: "auto",
+              whiteSpace: "pre-wrap",
+            }}
+          >
+            {typeof geminiRaw === "string"
+              ? geminiRaw.replace(/^```json|```$/g, "").trim()
+              : JSON.stringify(geminiRaw, null, 2)}
+          </pre>
+        ) : (
+          <p style={{ fontStyle: "italic", color: "black" }}>
+            No AI summary available.
+          </p>
+        )}
+      </div>
 
       <div>
         <h3>Learn more about related news:</h3>
