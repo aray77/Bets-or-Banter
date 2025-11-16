@@ -63,12 +63,14 @@ function EventPage() {
                 key={index}
                 title={event.title}
                 sub_title={event.sub_title}
+                event_ticker={event.event_ticker}
                 onClick={() =>
                   navigate(`/marketAnalysis/${event.title}`, {
                     state: {
                       id: event.id,
                       title: event.title,
                       sub_title: event.sub_title,
+                      event_ticker: event.event_ticker,
                     },
                   })
                 }
