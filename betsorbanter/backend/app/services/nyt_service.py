@@ -11,14 +11,16 @@ async def article_search(query: str, page: int = 0):
     params = {
         "q": query,
         "page": page,
-        "api-key": NYT_API_KEY,
+        "api-key": "7mpZ5GuGNNsCA4yJ0rpmBchMb8o1gCqi",
     }
 
     try:
         async with httpx.AsyncClient(timeout=10.0) as client:
             response = await client.get(NYT_BASE, params=params)
             response.raise_for_status()
-            return response.json()
+            data = response.json()
+            data["response"]["docs"] = data["response"]["docs"][:5]
+            return data
     except httpx.HTTPStatusError as e:
         raise HTTPException(status_code=e.response.status_code, detail=e.response.text)
     except Exception as e:
