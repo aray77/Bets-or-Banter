@@ -1,0 +1,27 @@
+.marketBox {
+  width: 90%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column; /* stack subtitle + title vertically */
+  justify-content: space-between; /* push them to top and bottom */
+  border: 1px solid #000000;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #347a54;
+}
+
+.marketBox .subtitle {
+  margin: 0;
+  font-size: 14px;
+}
+
+.marketBox .title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.marketBox:hover {
+  cursor: pointer;
+  background-color: #f0f0f0;
+}

@@ -8,3 +8,20 @@ html, body {
 }
 
 
+#marketList {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);  
+  gap: 10px; 
+  padding: 0;
+  margin: 50px;
+  list-style: none;
+}
+
+#marketList .marketItem {
+  min-height: 100px;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
