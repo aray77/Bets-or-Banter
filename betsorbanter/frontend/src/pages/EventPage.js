@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../pagesCSSfiles/EventPage.css";
 import NavBar from "../components/navBar";
@@ -6,6 +6,7 @@ import MarketBox from "../components/marketBox";
 
 function EventPage() {
   const location = useLocation();
+  const navigate = useNavigate();
   const passedData = location.state?.searchData || {}; // passes query
   const query = passedData.query; // uses query field of searchData
 
@@ -56,12 +57,24 @@ function EventPage() {
         )}
 
         {!loading && !error && events.length > 0 && (
-          <ul id = "marketList">
+          <ul id="marketList">
             {events.map((event, index) => (
-              <MarketBox key={index} title={event.title} sub_title={event.sub_title} />
+              <MarketBox
+                key={index}
+                title={event.title}
+                sub_title={event.sub_title}
+                onClick={() =>
+                  navigate(`/marketAnalysis/${event.title}`, {
+                    state: {
+                      id: event.id,
+                      title: event.title,
+                      sub_title: event.sub_title,
+                    },
+                  })
+                }
+              />
             ))}
           </ul>
-          
         )}
       </div>
     </div>

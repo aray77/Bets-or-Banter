@@ -1,0 +1,9 @@
+.MarketAnalysis {
+  margin: 20px;
+}
+
+.displayMarkets {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

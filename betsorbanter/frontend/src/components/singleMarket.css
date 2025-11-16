@@ -1,0 +1,18 @@
+.singleMarket {
+  width: 60%;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  margin-left: 300px;
+  padding-bottom: 20px;
+}
+
+h1, h2, h3, h4, h5 {
+    padding: 10px;
+}
+
+h4{
+    color: rgb(0, 0, 0);
+}
+h3{
+    color: grey;
+}
