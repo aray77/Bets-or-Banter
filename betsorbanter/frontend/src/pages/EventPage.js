@@ -1,10 +1,12 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../pagesCSSfiles/EventPage.css";
 import NavBar from "../components/navBar";
+import MarketBox from "../components/marketBox";
 
 function EventPage() {
   const location = useLocation();
+  const navigate = useNavigate();
   const passedData = location.state?.searchData || {}; // passes query
   const query = passedData.query; // uses query field of searchData
 
@@ -21,14 +23,16 @@ function EventPage() {
 
       try {
         const res = await fetch(
-          `http://127.0.0.1:8000/kalshi/events/search_title?keyword=${query}`
+          `http://127.0.0.1:8000/kalshi/events/search_title?keyword=${encodeURIComponent(
+            query
+          )}`
         );
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
         setEvents(data.events || []);
       } catch (err) {
         console.error(err);
-        setError("Failed to fetch search results ");
+        setError("Failed to fetch search results");
       } finally {
         setLoading(false);
       }
@@ -53,11 +57,22 @@ function EventPage() {
         )}
 
         {!loading && !error && events.length > 0 && (
-          <ul>
+          <ul id="marketList">
             {events.map((event, index) => (
-              <li key={index}>
-                <b>{event.title}</b> - {event.sub_title}
-              </li>
+              <MarketBox
+                key={index}
+                title={event.title}
+                sub_title={event.sub_title}
+                onClick={() =>
+                  navigate(`/marketAnalysis/${event.title}`, {
+                    state: {
+                      id: event.id,
+                      title: event.title,
+                      sub_title: event.sub_title,
+                    },
+                  })
+                }
+              />
             ))}
           </ul>
         )}

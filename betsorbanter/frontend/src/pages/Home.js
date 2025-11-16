@@ -68,7 +68,7 @@ function Home() {
         <div id="mission">
           <img src={logoFlip} alt="Logo" />
           <div>
-            <h4>Supporting Future Investors. One Bet At A Time.</h4>
+            <h4 style={{ color: "white" }}>Supporting Future Investors. One Bet At A Time.</h4>
             <p>
               Supporting future investors through smart betting practices
               matters because betting, when approached responsibly and
