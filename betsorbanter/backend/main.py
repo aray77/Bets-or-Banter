@@ -11,3 +11,6 @@ app.include_router(kalshi_router)
 @app.get("/")
 def root():
     return {"message": "Kalshi backend API is running"}
+
+from app.routers.nyt_router import router as nyt_router
+app.include_router(nyt_router)
