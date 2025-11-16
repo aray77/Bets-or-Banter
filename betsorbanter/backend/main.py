@@ -20,12 +20,25 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers after middleware
+from dotenv import load_dotenv
+load_dotenv()
+
+# @app.get("/kalshi/search")
+# async def search_kalshi(keyword: str = Query(..., min_length=2)):
+#     """
+#     Search Kalshi markets by keyword.
+#     Example: /kalshi/search?keyword=bitcoin
+#     """
+#     return await search_kalshi_markets(keyword)
+
 app.include_router(kalshi_router)
 
 @app.get("/")
 def root():
     return {"message": "Kalshi backend API is running"}
+
+from app.routers.gemini_router import router as gemini_router
+app.include_router(gemini_router)
 
 
 
